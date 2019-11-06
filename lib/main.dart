@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: RaisedButton(
-            onPressed: conditionAndLoop,
+            onPressed: baseException,
             child: Text("Click"),
           ),
         ),
@@ -238,7 +238,45 @@ void conditionAndLoop() {
   }
 
   int num = 10;
-  while(num>0){
+  while (num > 0) {
     print(num--);
   }
+}
+
+// 函数
+void baseFunction() {
+  debugPrint("------------------------结果----------------------");
+  print(sum(1)); // 第二个参数为可选参数，可以不填
+  print(sum(1, 2));
+
+  // 位置可以任意换
+  print(add(y: 1,x: 2));
+  print(add(x: 1,y: 2));
+  test("Tom", 20);
+}
+
+int sum(int num1, [int num2]) {
+  // num2要有默认值（int num2=1） 否则报错 :The following NoSuchMethodError was thrown while handling a gesture:
+  return num1 + num2;
+}
+
+int add({int x = 0, int y = 1}) {
+  return x + y;
+}
+
+void test (String name,  int  age){
+     print("name:$name age: $age");
+}
+
+void  baseException(){
+  throw Exception("抛出异常");
+
+  try{
+
+  } on Exception  catch(exception) {
+     print(exception.toString());
+  }finally{
+
+  }
+
 }
