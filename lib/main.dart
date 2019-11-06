@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: RaisedButton(
-            onPressed: baseFunction,
+            onPressed: baseCollection,
             child: Text("Click"),
           ),
         ),
@@ -134,19 +134,54 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// 基础语法 学习
-void baseFunction() {
+/// 基础语法:基本类型
+void baseType() {
   /// 1：变量的定义（dart 没有byte char short float。int double占8字节，64位）
   bool isTrue = true; // 布尔类型
   int number = 10; // 整型
   double score = 99.67; // 小数
-  String name = "sunny Day"; //字符串
-
 
   /// 2、常量
   final int FLAG = 0; // 运行时常量，运行期间不可变。
   const int TYPR = 1; // 编译时常量，编译期间就确定
 
   /// 3、自推断-弱语言类型 var
+  var weak = "我是弱语言类型";
 
+  /// 注意：Dart 中一切皆对象，包括 int、函数.
+
+  /// 4、String
+
+  String name = "sunnyDay "; //字符串
+  String age = "18";
+  var upCaseName = name.toUpperCase();
+  var trimName = name.trim();
+  print(
+      "upCaseName和trimName是否相等：${upCaseName == trimName}"); // 注意这里使用+链接失败，推荐使用 模板字符串 方式获取
+  print(identical(name, age)); // 比较对象
+}
+
+/// 基础语法：集合 list、set、map
+void baseCollection() {
+  /// 一、list的几种声明:
+
+  //1、以构造函数的方式声明,且添加泛型限制。（new 对象时关键字new  可以省略）
+  var numberList = List<int>();
+  numberList.add(1);
+  numberList.add(2);
+
+  // 2、[] 方式，类型自推断
+  var languageList = ["dart", "groovy", "java", "kotlin"];
+
+  // 3、限制 泛型
+  var nameList = <String>["Tom", "Kate"];
+
+  // 4、不可变list- const
+  const mlist = [1, 2]; // 等同 var mlist = const[1,2];
+  //mlist.add(3);
+
+  // 遍历：Unsupported operation: Cannot add to an unmodifiable list
+  for (int temp in mlist) {
+    print(temp);
+  }
 }
