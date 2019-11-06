@@ -63,3 +63,83 @@ var weak = "我是弱语言类型";
     print(temp);
   }
 ```
+
+###### 2、set集合
+
+```dart
+var setList = Set();
+  setList.add(1);
+  setList.add(2);
+
+```
+
+###### 3、map
+
+```dart
+ var mapList = Map<String, String>();
+  mapList["key1"] = "value1";
+  mapList["key2"] = "value2";
+
+  for (String s in mapList.keys) {
+    print(s);
+  }
+  for (String s in mapList.values ) {
+    print(s);
+  }
+```
+
+### 三、dynamic 和 Object
+>Object 为dart 对象的超类。Object 和 dynamic 都使得我们可以接收任意类型的参数，但两者的区别非常的大
+>
+>1、Object会在编译期间进行类型检测
+>
+>2、dynamic则告诉编译器，编译期间。知道自己在做什么，不用做类型检测。但是类型不正确时运行期间时会报错的。
+
+```dart
+  Object str1 = "123";
+  str1.age = 20; // 编译就不通过 类型不正确
+  
+  
+  dynamic str2 = "456";
+  str2.name = 3; // 运行报错：
+  // The following NoSuchMethodError was thrown while handling a gesture:
+  // Class 'String' has no instance setter 'name='.
+```
+>和kt一样可以使用 is关键字来进行类型判断
+
+### 四、条件、循环语句
+> if else 、switch case、 for、while
+>
+
+```dart
+
+ // if else
+  bool isChecked = true;
+  if (isChecked) {
+    print("if语句执行");
+  } else {
+    print("else语句执行");
+  }
+
+  // switch case
+  String name = "Tom";
+  switch (name) {
+    case "Kate":
+      print("i am kate");
+      break;
+    case "Tom":
+      print("i am tom");
+      break;
+    default:
+      break;
+  }
+
+  for (int i = 0; i < 10; i++) {
+    print(i);
+  }
+
+  int num = 10;
+  while(num>0){
+    print(num--);
+  }
+```

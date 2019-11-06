@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: RaisedButton(
-            onPressed: baseCollection,
+            onPressed: conditionAndLoop,
             child: Text("Click"),
           ),
         ),
@@ -183,5 +183,62 @@ void baseCollection() {
   // 遍历：Unsupported operation: Cannot add to an unmodifiable list
   for (int temp in mlist) {
     print(temp);
+  }
+
+  var setList = Set();
+  setList.add(1);
+  setList.add(2);
+
+  var mapList = Map<String, String>();
+  mapList["key1"] = "value1";
+  mapList["key2"] = "value2";
+
+  for (String s in mapList.keys) {
+    print(s);
+  }
+  for (String s in mapList.values) {
+    print(s);
+  }
+}
+
+void baseObject() {
+  Object str1 = "123";
+  // str1.age = 20; // 编译就不通过 类型不正确
+
+  dynamic str2 = "456";
+  //str2.name = 3; // 运行报错：
+  // The following NoSuchMethodError was thrown while handling a gesture:
+  // Class 'String' has no instance setter 'name='.
+}
+
+void conditionAndLoop() {
+  // if else
+  bool isChecked = true;
+  if (isChecked) {
+    print("if语句执行");
+  } else {
+    print("else语句执行");
+  }
+
+  // switch case
+  String name = "Tom";
+  switch (name) {
+    case "Kate":
+      print("i am kate");
+      break;
+    case "Tom":
+      print("i am tom");
+      break;
+    default:
+      break;
+  }
+
+  for (int i = 0; i < 10; i++) {
+    print(i);
+  }
+
+  int num = 10;
+  while(num>0){
+    print(num--);
   }
 }
