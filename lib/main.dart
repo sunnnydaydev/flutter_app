@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: RaisedButton(
-            onPressed: faceObject,
+            onPressed: baseExtend,
             child: Text("Click"),
           ),
         ),
@@ -305,9 +305,49 @@ void faceObject() {
   MyClass myClass = MyClass(1, 2);
 
   // 使用时又类似属性访问（dart有点狗）
-  myClass.setX=8;
-  myClass.setY=8;
+  myClass.setX = 8;
+  myClass.setY = 8;
   // 使用时又类似属性访问（dart有点狗）
   print(myClass.getX);
   print(myClass.getY);
+}
+
+// -------------------------------------------------测试 继承------------------------------------------------------
+
+class Animal {
+  String _name;
+
+  Animal(String name) {
+    _name = name;
+  }
+
+  void run() {
+    print("$_name会跑！");
+  }
+}
+
+class Person extends Animal {
+  Person(String name) : super(name);
+
+  @override
+  void run() {
+    print("人会跑");
+  }
+
+  void study() {
+    print("人学习");
+  }
+}
+
+void baseExtend() {
+  // 1、继承重写
+  Animal animal = Person();
+  animal.run(); //人会跑
+
+  // 和java不同的多态
+  //animal.study();// 多态机制 编译期间不通过，需要用户手动转型。
+  if (animal is Person) {
+    // 使用转型
+    animal.study();
+  }
 }
