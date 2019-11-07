@@ -319,6 +319,7 @@ class Animal {
 
   Animal(String name) {
     _name = name;
+    print("父类构造");
   }
 
   void run() {
@@ -327,7 +328,9 @@ class Animal {
 }
 
 class Person extends Animal {
-  Person(String name) : super(name);
+  Person(String name) : super(name) {
+    print("子类构造");
+  }
 
   @override
   void run() {
@@ -341,7 +344,7 @@ class Person extends Animal {
 
 void baseExtend() {
   // 1、继承重写
-  Animal animal = Person();
+  Animal animal = Person("tom");
   animal.run(); //人会跑
 
   // 和java不同的多态
