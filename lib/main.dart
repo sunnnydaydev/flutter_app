@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: RaisedButton(
-            onPressed: baseException,
+            onPressed: faceObject,
             child: Text("Click"),
           ),
         ),
@@ -250,8 +250,8 @@ void baseFunction() {
   print(sum(1, 2));
 
   // 位置可以任意换
-  print(add(y: 1,x: 2));
-  print(add(x: 1,y: 2));
+  print(add(y: 1, x: 2));
+  print(add(x: 1, y: 2));
   test("Tom", 20);
 }
 
@@ -264,19 +264,50 @@ int add({int x = 0, int y = 1}) {
   return x + y;
 }
 
-void test (String name,  int  age){
-     print("name:$name age: $age");
+void test(String name, int age) {
+  print("name:$name age: $age");
 }
 
-void  baseException(){
+void baseException() {
   throw Exception("抛出异常");
 
-  try{
+  try {} on Exception catch (exception) {
+    print(exception.toString());
+  } finally {}
+}
 
-  } on Exception  catch(exception) {
-     print(exception.toString());
-  }finally{
+class MyClass {
+  int x; // 不用下划线开头默认public
+  int _y; // 代表 private
 
+  MyClass(int x, int y)
+      : x = x,
+        _y = y {
+    // todo
   }
 
+  // getter
+  int get getX => x;
+
+  int get getY {
+    return _y;
+  }
+
+  set setX(int x) => this.x = x; // 注意这里的this使用
+
+  set setY(int y) {
+    this._y = y;
+  }
+}
+
+// 面向对象
+void faceObject() {
+  MyClass myClass = MyClass(1, 2);
+
+  // 使用时又类似属性访问（dart有点狗）
+  myClass.setX=8;
+  myClass.setY=8;
+  // 使用时又类似属性访问（dart有点狗）
+  print(myClass.getX);
+  print(myClass.getY);
 }
